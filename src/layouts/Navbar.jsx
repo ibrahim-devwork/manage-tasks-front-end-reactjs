@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -8,8 +9,7 @@ const Navbar = () => {
             <span className="nav-link" data-widget="pushmenu" role="button"><i className="fas fa-bars"></i></span>
         </li>
         <li className="nav-item d-none d-sm-inline-block">
-            {/* <a href="#" className="nav-link">Home</a> */}
-            <span href="#" className="nav-link">Home</span>
+            <NavLink to="/" className="nav-link">Dashboard</NavLink>
         </li>
         </ul>
     </nav>

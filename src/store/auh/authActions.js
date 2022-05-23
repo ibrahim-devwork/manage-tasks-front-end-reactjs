@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axiosInstance from "../../helpers/axiosInstance";
+import  axiosInstance  from "../../helpers/axiosInstance.js";
 
 export const userLogin = createAsyncThunk("login/userLogin", async (data) => {
   try {
@@ -7,7 +7,7 @@ export const userLogin = createAsyncThunk("login/userLogin", async (data) => {
       .post("/login", data)
       .then((response) => response)
       .catch((error) => error.response);
-    return {
+      return {
       data: await response?.data,
       status: await response?.status
     };

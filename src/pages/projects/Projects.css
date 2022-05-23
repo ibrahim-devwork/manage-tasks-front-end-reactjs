@@ -1,0 +1,57 @@
+.spinner-loading {
+    margin-left: 50%;
+}
+
+table {
+    max-width: 100%;
+}
+
+#project-table th {
+    text-align: center;
+}
+
+#project-table th+th {
+    text-align: center;
+}
+
+#project-table th+th+th {
+    text-align: center;
+}
+
+#project-table th+th+th+th {
+    text-align: center;
+}
+
+#project-table td {
+    max-width: 60px !important;
+    text-align: center !important;
+
+    text-overflow: ellipsis !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+#project-table td+td {
+    max-width: 280px !important;
+    text-align: center !important;
+}
+
+#project-table td+td+td {
+    max-width: 320px !important;
+    text-align: center;
+}
+
+#project-table td+td+td+td {
+    max-width: 130px !important;
+    text-align: center !important;
+}
+
+.add-new-btn {
+    float: right;
+    margin-top: 6px;
+}
+
+.pagination {
+    margin-left: 50%;
+}

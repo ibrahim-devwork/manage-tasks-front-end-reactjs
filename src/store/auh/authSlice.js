@@ -20,7 +20,8 @@ export const authSlice = createSlice({
         case 200:
           state.status = true;
           localStorage.setItem("token", payload?.data?.data?.token);
-          localStorage.setItem("username", payload?.data?.data?.first_name);
+          localStorage.setItem("username", payload?.data?.data?.username);
+          localStorage.setItem("image", payload?.data?.data?.image);
           break;
         case 422:
           localStorage.clear();
@@ -28,7 +29,7 @@ export const authSlice = createSlice({
           break;
         default:
           state.errors = {
-            incorrect_infos: "Connection refused !"
+            message : "Connection refused !"
           };
           localStorage.clear();
       }
