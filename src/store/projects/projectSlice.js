@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProjects } from "./projectActions";
+import { getProjects, createProject } from "./projectActions";
 
 export const projectSlice = createSlice({
 name : 'projectSlice',
@@ -39,6 +39,37 @@ extraReducers : {
         }
     },
     [getProjects.rejected] : (state, payload) => {
+        console.log("getProjects is rejected ...");
+    },
+
+    // Save prooject ===============
+    [createProject.pending] : (state, {payload}) => {
+        state.errors        = [];
+        state.isDone        = false;
+    },
+    [createProject.fulfilled] : (state, {payload}) => {
+        switch (payload?.status) {
+            case 401:
+              state.errors = {
+                message: "Authorization required. Sign in to your account.!"
+              };
+              break;
+            case 403:
+              state.errors = {
+                message: "You do not have permission to perform this action !"
+              };
+              break;
+            case 201:
+              state.isDone = true;
+              break;
+            case 422:
+              state.errors = payload?.data?.errors;
+              break;
+            default:
+              state.errors = { message: "Something is wrong !" };
+          }
+    },
+    [createProject.rejected] : (state, payload) => {
         console.log("getProjects is rejected ...");
     },
 }

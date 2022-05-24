@@ -1,4 +1,5 @@
 
+import React, {memo} from "react";
 
 const LineOfProjctTable = ({project}) => {
     return (
@@ -23,4 +24,4 @@ const LineOfProjctTable = ({project}) => {
     );
 }
 
-export default LineOfProjctTable;
+export default memo(LineOfProjctTable);

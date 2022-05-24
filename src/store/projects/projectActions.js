@@ -16,4 +16,18 @@ export const getProjects = createAsyncThunk("get/getProjects", async (filter) =>
   }
 });
 
+export const createProject = createAsyncThunk("post/createProject", async (data) => {
+  try {
+    const response = await axiosInstance
+      .post("/projects", data)
+      .then((response) => response)
+      .catch((error) => error.response);
+      return {
+      data: await response?.data,
+      status: await response?.status
+    };
+  } catch (error) {
+    console.log(error);
+  }
+});
 

@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, memo} from 'react';
+import AddNewProject from '../forms/AddNewProject';
 
 const FilterProjects = ({ filter, setFilter }) => {
     const [filterForm, setFilterForm] = useState({
@@ -39,15 +40,11 @@ const FilterProjects = ({ filter, setFilter }) => {
                 </form>
             </div>
             <div className="col-md-8">
-                <button className='add-new-btn btn btn-primary'>
-                <i className="nav-icon fas fa-plus"></i>
-                <span> </span>
-                    Add new
-                </button>
+                <AddNewProject filter={filter} setFilter={setFilter}/>
             </div>
         </div>
     </div>
     )
 }
 
-export default FilterProjects;
+export default memo(FilterProjects);

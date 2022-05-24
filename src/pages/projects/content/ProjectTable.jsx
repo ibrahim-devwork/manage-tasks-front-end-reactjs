@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, memo} from 'react';
 import LineOfProjctTable from './LineOfProjctTable';
 import { useDispatch , useSelector} from 'react-redux';
 import { getProjects } from '../../../store/projects/projectActions';
@@ -63,4 +63,4 @@ const ProjectTable = ({ filter, setFilter }) => {
     )
 }
 
-export default ProjectTable;
+export default memo(ProjectTable);

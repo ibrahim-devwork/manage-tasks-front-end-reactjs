@@ -8,12 +8,12 @@ import Projects from './pages/projects/Projects';
 const AllRoutes = () => {
 
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         if(!localStorage.getItem("token")){
             navigate('/login');
         } else {
-            navigate('/');
+            navigate(window.location.pathname + window.location.search);
         }
     }, [localStorage.getItem("token")]);
 

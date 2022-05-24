@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import ReactPaginate from "react-paginate";
 
 const PaginationProjects = ({ countPerPage, filter, setFilter }) => {
@@ -34,4 +34,4 @@ const PaginationProjects = ({ countPerPage, filter, setFilter }) => {
     )
 }
 
-export default PaginationProjects;
+export default memo(PaginationProjects);

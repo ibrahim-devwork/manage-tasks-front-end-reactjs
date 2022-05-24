@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {NavLink} from 'react-router-dom';
 import { userLogout } from '../store/auh/authActions';
 import { useDispatch } from 'react-redux';
@@ -67,4 +67,4 @@ const Sidebar = () => {
     );
 }
 
-export default Sidebar;
+export default memo(Sidebar);
