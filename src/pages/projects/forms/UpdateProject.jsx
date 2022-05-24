@@ -2,40 +2,46 @@ import React, {memo, useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import projectValidation from './projectValidation';
-import { createProject } from '../../../store/projects/projectActions';
+import { updateProject } from '../../../store/projects/projectActions';
 import Swal from 'sweetalert2';
 
-const AddNewProject = ({filter, setFilter}) => {
-    const dispatch      = useDispatch();
-    const projectData   = useSelector(state => state.projectSlice);
+const UpdateProject = ({filter, setFilter, projectUpdate}) => {
+    const dispatch          = useDispatch();
+    const projectData       = useSelector(state => state.projectSlice);
     const [projectValideted, setProjectValideted] = useState({});
-    const [form, setForm] = useState({
+    const [form, setForm]   = useState({
+        id : '',
         name : '',
         description : ''
     });
+
+    useEffect(()=>{
+        if(projectUpdate?.id)
+        setForm({...form, id : projectUpdate?.id, name : projectUpdate?.name, description : projectUpdate?.description})
+
+    }, [projectUpdate])
 
     const handleChange = (event) => {
         setForm({...form, [event.target.name] : event.target.value});
     }
 
     useEffect(() => {
-        if(projectData?.isDone === true){
-            setForm({...form, name : '', description : ''});
+        if(projectUpdate?.id && projectData?.isUpdate === true){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Your project has been saved',
+                title: 'Your project has been update',
                 showConfirmButton: false,
                 timer: 1500
             });
             setFilter({
                 ...filter,
                 search: '',
-                pagination: 1,
+                pagination: filter.pagination,
                 count_per_page: 10
             });
         }
-    }, [projectData?.isDone])
+    }, [projectData?.isUpdate])
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -44,23 +50,18 @@ const AddNewProject = ({filter, setFilter}) => {
         setProjectValideted(projectValidErr);
 
         if (Object.keys(projectValidErr).length === 0) {
-            dispatch(createProject(form));
+            dispatch(updateProject(form));
         }
     }
 
     return (
-        <div>
-            <button className='add-new-btn btn btn-primary' data-toggle="modal" data-target="#add-new-project">
-                <i className="nav-icon fas fa-plus"></i>
-                <span> </span>
-                    Add new
-            </button>
-
-            <div className="modal fade" id="add-new-project">
+        <div> 
+            
+            <div className="modal fade" id="modal-update-project">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h4 className="modal-title">Add new project</h4>
+                            <h4 className="modal-title">Update this project</h4>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -80,7 +81,7 @@ const AddNewProject = ({filter, setFilter}) => {
                                         <input 
                                         onChange={handleChange}
                                         name='name'
-                                        value={form.name}
+                                        value={form?.name}
                                         type="text" 
                                         className="form-control" 
                                         id="projectName" 
@@ -100,7 +101,7 @@ const AddNewProject = ({filter, setFilter}) => {
                                     <div className="form-group">
                                         <label htmlFor='description'>Description</label>
                                         <textarea 
-                                        value={form.description}
+                                        value={form?.description}
                                         onChange={handleChange}
                                         name='description'
                                         className="form-control" 
@@ -124,7 +125,7 @@ const AddNewProject = ({filter, setFilter}) => {
                         </div>
                         <div className="modal-footer justify-content-between">
                             <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                            <button onClick={handleSubmit} type="submit" className="btn btn-success">Save</button>
+                            <button onClick={handleSubmit} type="submit" className="btn btn-success">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -133,4 +134,4 @@ const AddNewProject = ({filter, setFilter}) => {
     )
 }
 
-export default memo(AddNewProject);
+export default memo(UpdateProject);
