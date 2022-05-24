@@ -74,7 +74,7 @@ const LineOfProjctTable = ({project, filter, setFilter, projectUpdate, setProjec
                     <i className="nav-icon fas fa-pen"></i>
                 </button>
                 <span> </span>
-                <button type="button" className="btn btn-info">
+                <button onClick={handleUpdate} type="button" className="btn btn-info" data-toggle="modal" data-target="#modal-show-project">
                     <i className="nav-icon fas fa-eye"></i>
                 </button>
                 <span> </span>

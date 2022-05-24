@@ -5,6 +5,7 @@ import { getProjects } from '../../../store/projects/projectActions';
 import '../Projects.css';
 import PaginationProjects from './PaginationProjects';
 import UpdateProject from '../forms/UpdateProject';
+import ShowOneProject from '../forms/ShowOneProject';
 
 const ProjectTable = ({ filter, setFilter }) => {
     const dispatch              = useDispatch();
@@ -73,8 +74,10 @@ const ProjectTable = ({ filter, setFilter }) => {
                 filter={filter}
                 setFilter={setFilter}
                 projectUpdate={projectUpdate} 
-                setProjectUpdate={setProjectUpdate}
             /> 
+            <ShowOneProject
+            projectUpdate={projectUpdate} 
+            />
         </div>
     )
 }

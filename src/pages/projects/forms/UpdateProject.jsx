@@ -105,7 +105,7 @@ const UpdateProject = ({filter, setFilter, projectUpdate}) => {
                                         onChange={handleChange}
                                         name='description'
                                         className="form-control" 
-                                        rows="3" 
+                                        rows="6" 
                                         id='description' 
                                         placeholder="Enter description"/>
                                         {projectValideted?.description &&

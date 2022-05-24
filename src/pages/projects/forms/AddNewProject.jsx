@@ -37,6 +37,10 @@ const AddNewProject = ({filter, setFilter}) => {
         }
     }, [projectData?.isDone])
 
+    const hadleClear = () => {
+        setForm({...form, name : '', description : ''});
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         let projectValidErr = {};
@@ -61,7 +65,7 @@ const AddNewProject = ({filter, setFilter}) => {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h4 className="modal-title">Add new project</h4>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <button onClick={hadleClear} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -104,7 +108,7 @@ const AddNewProject = ({filter, setFilter}) => {
                                         onChange={handleChange}
                                         name='description'
                                         className="form-control" 
-                                        rows="3" 
+                                        rows="6" 
                                         id='description' 
                                         placeholder="Enter description"/>
                                         {projectValideted?.description &&
@@ -123,7 +127,7 @@ const AddNewProject = ({filter, setFilter}) => {
                             {/* Modal body */}
                         </div>
                         <div className="modal-footer justify-content-between">
-                            <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                            <button onClick={hadleClear} type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                             <button onClick={handleSubmit} type="submit" className="btn btn-success">Save</button>
                         </div>
                     </div>
