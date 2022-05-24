@@ -46,3 +46,18 @@ export const updateProject = createAsyncThunk("put/updateProject", async (data) 
   }
 });
 
+export const deleteProject = createAsyncThunk("delete/deleteProject", async (id) => {
+  try {
+    const response = await axiosInstance
+      .delete("/projects/"+id)
+      .then((response) => response)
+      .catch((error) => error.response);
+      return {
+      data: await response?.data,
+      status: await response?.status
+    };
+  } catch (error) {
+    console.log(error);
+  }
+});
+

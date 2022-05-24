@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProjects, createProject, updateProject } from "./projectActions";
+import { getProjects, createProject, updateProject , deleteProject} from "./projectActions";
 
 export const projectSlice = createSlice({
 name : 'projectSlice',
@@ -11,6 +11,7 @@ initialState  : {
     isSuccess : false,
     isDone : false,
     isUpdate : false,
+    isDelete : 0,
     countPerPage : 0,
 },
 reducers : {
@@ -26,6 +27,7 @@ extraReducers : {
         state.isSuccess     = false;
         state.isDone        = false;
         state.isUpdate      = false;
+        state.isDelete      = 0;
         state.countPerPage  = 0;
     },
     [getProjects.fulfilled] : (state, {payload}) => {
@@ -48,6 +50,7 @@ extraReducers : {
     [createProject.pending] : (state, {payload}) => {
         state.errors        = [];
         state.isDone        = false;
+        state.isDelete      = 0;
     },
     [createProject.fulfilled] : (state, {payload}) => {
         switch (payload?.status) {
@@ -79,6 +82,7 @@ extraReducers : {
     [updateProject.pending] : (state, {payload}) => {
       state.errors        = [];
       state.isUpdate      = false;
+      state.isDelete      = 0;
     },
     [updateProject.fulfilled] : (state, {payload}) => {
         switch (payload?.status) {
@@ -103,6 +107,41 @@ extraReducers : {
           }
     },
     [updateProject.rejected] : (state, payload) => {
+        console.log("getProjects is rejected ...");
+    },
+
+    // Delete project ================
+    [deleteProject.pending] : (state, {payload}) => {
+      state.errors        = [];
+      state.isDelete      = 0;
+    },
+    [deleteProject.fulfilled] : (state, {payload}) => {
+        switch (payload?.status) {
+            case 401:
+              state.isDelete  = 2;
+              state.errors = {
+                message: "Authorization required. Sign in to your account.!"
+              };
+              break;
+            case 403:
+              state.isDelete  = 2;
+              state.errors = {
+                message: "You do not have permission to perform this action !"
+              };
+              break;
+            case 200:
+              state.isDelete  = 1;
+              break;
+            case 422:
+              state.isDelete  = 2;
+              state.errors = payload?.data?.errors;
+              break;
+            default:
+              state.isDelete  = 2;
+              state.errors = { message: "Something is wrong !" };
+          }
+    },
+    [deleteProject.rejected] : (state, payload) => {
         console.log("getProjects is rejected ...");
     },
 }
