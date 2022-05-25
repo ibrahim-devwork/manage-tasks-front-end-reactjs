@@ -1,10 +1,11 @@
 import React, {memo, useEffect} from "react";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector} from "react-redux";
+import { deleteTask } from "../../../store/tasks/taskActions";
 
 const LineOfTaskTable = ({task, filter, setFilter, taskUpdate, setTaskUpdate}) => {
-    // const dispatch      = useDispatch();
-    // const projectData   = useSelector((state) => state.projectSlice);
+    const dispatch   = useDispatch();
+    const taskData   = useSelector((state) => state.taskSlice);
 
     // const handleUpdate = () => {
     //     setProjectUpdate({
@@ -15,52 +16,54 @@ const LineOfTaskTable = ({task, filter, setFilter, taskUpdate, setTaskUpdate}) =
     //     })
     // }
 
-    // useEffect(() => {
-    //     if(projectData?.isDelete === 1) {
-    //         setFilter({
-    //             ...filter,
-    //             search: '',
-    //             pagination: filter.pagination,
-    //             count_per_page: 10
-    //         });
-    //         Swal.fire(
-    //             'Deleted!',
-    //             'Your file has been deleted.',
-    //             'success'
-    //         );
-    //     } else if (projectData?.isDelete === 2) {
-    //         let message = '';
-    //         if(projectData?.errors?.message){
-    //             message = projectData?.errors?.message;
-    //         }
-    //         if(projectData?.errors?.id){
-    //             message = projectData?.errors?.id;
-    //         }
-    //         Swal.fire({
-    //             position: 'top-end',
-    //             icon: 'error',
-    //             title: message,
-    //             showConfirmButton: false,
-    //             timer: 1500
-    //         });
-    //     }
-    // }, [projectData])
+    useEffect(() => {
+        if(taskData?.isDelete === 1) {
+            setFilter({
+                ...filter,
+                search          : filter.search,
+                id_project      : filter.id_project,
+                statut          : filter.statut,
+                pagination      : filter.pagination,
+                count_per_page  : filter.count_per_page,
+            });
+            Swal.fire(
+                'Deleted!',
+                'Your task has been deleted.',
+                'success'
+            );
+        } else if (taskData?.isDelete === 2) {
+            let message = '';
+            if(taskData?.errors?.message){
+                message = taskData?.errors?.message;
+            }
+            if(taskData?.errors?.id){
+                message = taskData?.errors?.id;
+            }
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: message,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }, [taskData?.isDelete])
 
-    // const handleDelete = () => {
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't be able to revert this!",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, delete it!'
-    //       }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             dispatch(deleteProject(project?.id));
-    //         }
-    //       })
-    // }
+    const handleDelete = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(deleteTask(task?.id));
+            }
+          })
+    }
 
     return (
         <tr>
@@ -83,7 +86,7 @@ const LineOfTaskTable = ({task, filter, setFilter, taskUpdate, setTaskUpdate}) =
                     <i className="nav-icon fas fa-eye"></i>
                 </button>
                 <span> </span>
-                <button type="button" className="btn btn-danger">
+                <button onClick={handleDelete} type="button" className="btn btn-danger">
                     <i className="nav-icon fas fa-trash"></i>
                 </button>
             </td>

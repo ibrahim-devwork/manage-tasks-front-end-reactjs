@@ -27,7 +27,7 @@ const LineOfProjctTable = ({project, filter, setFilter, projectUpdate, setProjec
             });
             Swal.fire(
                 'Deleted!',
-                'Your file has been deleted.',
+                'Your project has been deleted.',
                 'success'
             );
         } else if (projectData?.isDelete === 2) {
