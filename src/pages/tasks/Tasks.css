@@ -1,0 +1,71 @@
+.spinner-loading {
+    margin-left: 50%;
+}
+
+table {
+    max-width: 100%;
+}
+
+#task-table th {
+    text-align: center;
+}
+
+#task-table th+th {
+    text-align: center;
+}
+
+#task-table th+th+th {
+    text-align: center;
+}
+
+#task-table th+th+th+th {
+    text-align: center;
+}
+
+#task-table th+th+th+th+th {
+    text-align: center;
+}
+
+#task-table td {
+    max-width: 50px !important;
+    text-align: center !important;
+
+    text-overflow: ellipsis !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+#task-table td+td {
+    max-width: 350px !important;
+    text-align: center !important;
+}
+
+#task-table td+td+td {
+    max-width: 100px !important;
+    text-align: center;
+}
+
+#task-table td+td+td+td {
+    max-width: 100px !important;
+    text-align: center !important;
+}
+
+#task-table td+td+td+td {
+    max-width: 100px !important;
+    text-align: center !important;
+}
+
+#task-table td+td+td+td {
+    max-width: 100px !important;
+    text-align: center !important;
+}
+
+.add-new-btn {
+    float: right;
+    margin-top: 6px;
+}
+
+.pagination {
+    margin-left: 50%;
+}

@@ -4,6 +4,7 @@ import {Route, Routes, useNavigate} from 'react-router-dom';
 import Login from './pages/login/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Projects from './pages/projects/Projects';
+import Tasks from './pages/tasks/Tasks';
 
 const AllRoutes = () => {
 
@@ -24,6 +25,7 @@ const AllRoutes = () => {
                 <Routes>
                     <Route exact path="/" element={<Dashboard />} /> 
                     <Route path="/projects" element={<Projects />} /> 
+                    <Route path="/tasks" element={<Tasks />} /> 
                 </Routes>
             </div>
             }

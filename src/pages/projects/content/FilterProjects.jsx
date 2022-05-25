@@ -25,14 +25,14 @@ const FilterProjects = ({ filter, setFilter }) => {
         <div className="row">
             <div className="col-md-4 md-2">
                 <form onSubmit={handleFilter}>
-                    <div className="input-group input-group-lg">
+                    <div className="input-group">
                         <input
                         name='search'
                         value={filterForm.search}
                         onChange={handleChange}
-                        type="search" className="form-control form-control-lg" placeholder="Type your keywords here"/>
+                        type="search" className="form-control" placeholder="Type your keywords here"/>
                         <div className="input-group-append">
-                            <button type="submit" className="btn btn-lg btn-default">
+                            <button type="submit" className="btn btn-default">
                                 <i className="fa fa-search"></i>
                             </button>
                         </div>
