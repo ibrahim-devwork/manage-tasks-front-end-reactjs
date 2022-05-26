@@ -5,15 +5,17 @@ export const authSlice = createSlice({
   name: "authSlice",
   initialState: {
     errors: [],
-    status: false
+    status: false,
+    isLogout : false,
   },
   reducers: {},
   extraReducers: {
     // Login
     [userLogin.pending]: (state, { payload }) => {
       localStorage.clear();
-      state.errors = [];
-      state.status = false;
+      state.errors    = [];
+      state.status    = false;
+      state.isLogout  = false;
     },
     [userLogin.fulfilled]: (state, { payload }) => {
       switch (payload?.status) {
@@ -44,15 +46,20 @@ export const authSlice = createSlice({
     [userLogout.pending]: (state, { payload }) => {
       state.errors = [];
       state.status = false;
+      state.isLogout  = false;
     },
     [userLogout.fulfilled]: (state, { payload }) => {
-      localStorage.clear();
-      state.errors = [];
-      state.status = true;
+      if(payload?.status === 200){
+          localStorage.clear();
+          state.errors = [];
+          state.isLogout  = true;
+      } else {
+          localStorage.clear();
+          state.errors = [];
+          state.isLogout  = true;
+      }
     },
     [userLogout.rejected]: (state, { payload }) => {
-      localStorage.clear();
-      state.status = false;
       console.log("rejected...");
     }
   }

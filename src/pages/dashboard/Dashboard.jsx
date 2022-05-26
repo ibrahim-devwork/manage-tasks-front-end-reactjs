@@ -5,7 +5,7 @@ const Dashboard = () => {
     
     const [filter, setFilter] = useState({
         search          : "",
-        count_per_page  : 20
+        count_per_page  : 15
     });
 
     return (

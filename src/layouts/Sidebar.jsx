@@ -1,11 +1,20 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 import { userLogout } from '../store/auh/authActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.authSlice);
     
+    useEffect(() => {
+        if(user?.isLogout === true && !localStorage.getItem("token")){
+            navigate('/login');
+        }
+    }, [user]);
+
     const handleLogout = () => {
         dispatch(userLogout());
     }
@@ -64,10 +73,10 @@ const Sidebar = () => {
                         
                         <hr />
                         <li className="nav-item">
-                            <NavLink onClick={handleLogout} to="/login" className="nav-link">
+                            <button onClick={handleLogout}  className="nav-link">
                                 <i className="nav-icon fas fa-power-off"></i>
                                 <p>Logout</p>
-                            </NavLink>
+                            </button>
                         </li>
                     </ul>
                 </nav>

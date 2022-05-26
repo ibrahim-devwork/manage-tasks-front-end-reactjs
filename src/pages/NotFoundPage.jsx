@@ -29,7 +29,7 @@ const NotFoundPage = () => {
 
                         <p>
                             We could not find the page you were looking for.
-                            Meanwhile, you may <NavLink to="/">return to dashboard</NavLink> or try using the search form.
+                            Meanwhile, you may <NavLink to="/">return to dashboard</NavLink>.
                         </p>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Projects from './pages/projects/Projects';
 import Tasks from './pages/tasks/Tasks';
 import NotFoundPage from './pages/NotFoundPage';
+import Profile from './pages/profile/Profile';
 
 const AllRoutes = () => {
 
@@ -33,12 +34,20 @@ const AllRoutes = () => {
                         <Route exact path="/" element={<Dashboard />} /> 
                         <Route path="/projects" element={<Projects />} /> 
                         <Route path="/tasks" element={<Tasks />} /> 
-                        <Route path="*" element={<NotFoundPage />} />
+                        <Route path="/profile" element={<Profile />} />
+                        {window.location.pathname + window.location.search != '/login' &&
+                            <Route path="/*" element={<NotFoundPage />} />
+                        }
                     </Routes>
-                 ) : (
+                 ) 
+                 : 
+                 (
                     <Routes>
                         <Route exact path="/" element={<Dashboard />} /> 
-                        <Route path="*" element={<NotFoundPage />} />
+                        <Route path="/profile" element={<Profile />} />
+                        {window.location.pathname + window.location.search != '/login' &&
+                            <Route path="/*" element={<NotFoundPage />} />
+                        }
                     </Routes>
                  )}
             </div>
@@ -48,6 +57,7 @@ const AllRoutes = () => {
                 <Route path="/login" element={<Login />} />
             </Routes>
             }
+
         </div>
     )
 }
