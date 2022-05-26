@@ -1,5 +1,4 @@
 import React, {useState, memo, useEffect, useRef} from 'react';
-import axiosInstance from '../../../helpers/axiosInstance';
 import AddNewTask from '../forms/AddNewTask';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDropDownProjects, getDropDownUsers } from '../../../store/dropDownsData/dropDownsDataActions';

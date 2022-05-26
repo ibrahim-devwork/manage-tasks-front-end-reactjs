@@ -4,6 +4,7 @@ import '../Tasks.css';
 import LineOfTaskTable from './LineOfTaskTable';
 import {getTasks} from '../../../store/tasks/taskActions';
 import TaskPagination from './TaskPagination';
+import UpdateTask from '../forms/UpdateTask';
 
 const TaskTable = ({ filter, setFilter }) => {
     const dispatch      = useDispatch();
@@ -70,14 +71,14 @@ const TaskTable = ({ filter, setFilter }) => {
                     )}
                 </div>
             )}
-            {/* <UpdateProject
+             <UpdateTask
                 filter={filter}
                 setFilter={setFilter}
-                projectUpdate={projectUpdate} 
+                taskUpdate={taskUpdate} 
             /> 
-            <ShowOneProject
+            {/* <ShowOneProject
             projectUpdate={projectUpdate} 
-            /> */}
+            />  */}
         </div>
     )
 }

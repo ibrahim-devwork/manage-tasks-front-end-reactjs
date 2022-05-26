@@ -7,14 +7,17 @@ const LineOfTaskTable = ({task, filter, setFilter, taskUpdate, setTaskUpdate}) =
     const dispatch   = useDispatch();
     const taskData   = useSelector((state) => state.taskSlice);
 
-    // const handleUpdate = () => {
-    //     setProjectUpdate({
-    //         ...taskUpdate,
-    //         id : project?.id,
-    //         name : project?.name,
-    //         description : project?.description,
-    //     })
-    // }
+    const handleUpdate = () => {
+        setTaskUpdate({
+            ...taskUpdate,
+            id          : task?.id,
+            description : task?.description,
+            deadline    : task?.deadline,
+            statut      : task?.statut,
+            id_project  : task?.id_project,
+            users       : task?.users
+        })
+    }
 
     useEffect(() => {
         if(taskData?.isDelete === 1) {
@@ -78,11 +81,11 @@ const LineOfTaskTable = ({task, filter, setFilter, taskUpdate, setTaskUpdate}) =
                 {task?.statut === 5 && <span className="badge bg-success">Finished</span>}
             </td>
             <td>
-                <button type="button" className="btn btn-success" data-toggle="modal" data-target="#modal-update-project">
+                <button onClick={handleUpdate} type="button" className="btn btn-success" data-toggle="modal" data-target="#modal-update-task">
                     <i className="nav-icon fas fa-pen"></i>
                 </button>
                 <span> </span>
-                <button type="button" className="btn btn-info" data-toggle="modal" data-target="#modal-show-project">
+                <button type="button" className="btn btn-info" data-toggle="modal" data-target="#modal-show-task">
                     <i className="nav-icon fas fa-eye"></i>
                 </button>
                 <span> </span>

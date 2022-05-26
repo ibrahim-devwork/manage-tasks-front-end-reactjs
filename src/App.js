@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar  from './layouts/Navbar';
 import Footer from './layouts/Footer';
 import Sidebar from './layouts/Sidebar';
