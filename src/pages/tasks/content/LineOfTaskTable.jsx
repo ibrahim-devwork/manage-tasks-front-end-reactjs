@@ -85,7 +85,7 @@ const LineOfTaskTable = ({task, filter, setFilter, taskUpdate, setTaskUpdate}) =
                     <i className="nav-icon fas fa-pen"></i>
                 </button>
                 <span> </span>
-                <button type="button" className="btn btn-info" data-toggle="modal" data-target="#modal-show-task">
+                <button onClick={handleUpdate} type="button" className="btn btn-info" data-toggle="modal" data-target="#modal-show-task">
                     <i className="nav-icon fas fa-eye"></i>
                 </button>
                 <span> </span>
