@@ -22,6 +22,7 @@ export const authSlice = createSlice({
           localStorage.setItem("token", payload?.data?.data?.token);
           localStorage.setItem("username", payload?.data?.data?.username);
           localStorage.setItem("image", payload?.data?.data?.image);
+          localStorage.setItem("role", payload?.data?.data?.id_role);
           break;
         case 422:
           localStorage.clear();

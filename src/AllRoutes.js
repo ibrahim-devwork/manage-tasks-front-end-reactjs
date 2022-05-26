@@ -5,6 +5,7 @@ import Login from './pages/login/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Projects from './pages/projects/Projects';
 import Tasks from './pages/tasks/Tasks';
+import NotFoundPage from './pages/NotFoundPage';
 
 const AllRoutes = () => {
 
@@ -14,7 +15,11 @@ const AllRoutes = () => {
         if(!localStorage.getItem("token")){
             navigate('/login');
         } else {
-            navigate(window.location.pathname + window.location.search);
+            if(window.location.pathname + window.location.search === '/login'){
+                navigate('/');
+            } else {
+                navigate(window.location.pathname + window.location.search);
+            }
         }
     }, [localStorage.getItem("token")]);
 
@@ -22,11 +27,20 @@ const AllRoutes = () => {
         <div>
             {localStorage.getItem("token") && 
             <div className="content-wrapper">
-                <Routes>
-                    <Route exact path="/" element={<Dashboard />} /> 
-                    <Route path="/projects" element={<Projects />} /> 
-                    <Route path="/tasks" element={<Tasks />} /> 
-                </Routes>
+                 {(localStorage.getItem("role") && localStorage.getItem("role") != 3) ? 
+                 (
+                    <Routes>
+                        <Route exact path="/" element={<Dashboard />} /> 
+                        <Route path="/projects" element={<Projects />} /> 
+                        <Route path="/tasks" element={<Tasks />} /> 
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                 ) : (
+                    <Routes>
+                        <Route exact path="/" element={<Dashboard />} /> 
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                 )}
             </div>
             }
             {!localStorage.getItem("token") && 

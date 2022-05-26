@@ -34,24 +34,34 @@ const Sidebar = () => {
                                 <p>Pofile</p>
                             </NavLink>
                         </li>
+
+                        {/* This routes for Super admin and admin */}
+                        {(localStorage.getItem("role") && localStorage.getItem("role") != 3) &&
+                        <div>
                         <li className="nav-item">
                             <NavLink to="/users" className="nav-link">
                                 <i className="nav-icon fas fa-users"></i>
+                                <span>  </span>
                                 <p>Users</p>
                             </NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/projects" className="nav-link">
                                 <i className="nav-icon fas fa-file-powerpoint"></i>
+                                <span>  </span>
                                 <p>Projects</p>
                             </NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/tasks" className="nav-link">
                                 <i className="nav-icon fas fa-list"></i>
+                                <span>  </span>
                                 <p>Tasks</p>
                             </NavLink>
                         </li>
+                        </div>}
+                        {/* /--- This routes for Super admin and admin ---/ */}
+                        
                         <hr />
                         <li className="nav-item">
                             <NavLink onClick={handleLogout} to="/login" className="nav-link">
