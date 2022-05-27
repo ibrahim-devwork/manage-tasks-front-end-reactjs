@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './Profile.css';
 import ChangePersonalInformation from './forms/ChangePersonalInformation';
 import ChangeEmail from './forms/ChangeEmail';
 import ChangeUsername from './forms/ChangeUsername';
 import ChangePassword from './forms/ChangePassword';
+import { useDispatch } from "react-redux";
+import { getProfile } from "../../store/profile/profileActions";
 
-const profile = () => {
+const Profile = () => {
+    const [isChange, setIsChange] = useState(false);
+    const dispatch                = useDispatch();
+    
+    useEffect(() => {
+        dispatch(getProfile());
+    }, [dispatch, isChange]);
+
     return (
         <div>
             <section className="content-header">
@@ -22,7 +31,9 @@ const profile = () => {
             </section>
             
             <div className="container" style={{ width :'38%' }}>
-            <ChangePersonalInformation />
+            <ChangePersonalInformation
+            setIsChange={setIsChange}
+            />
             <br/>
             
             <ChangeEmail />
@@ -31,9 +42,10 @@ const profile = () => {
             <br />
             <ChangePassword /> 
            
+            <br /><br />
             </div>
             
         </div>
     )
 }
-export default profile;
+export default Profile;

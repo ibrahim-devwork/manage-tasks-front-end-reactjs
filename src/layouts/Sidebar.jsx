@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const user = useSelector(state => state.authSlice);
+    const navigate        = useNavigate();
+    const dispatch        = useDispatch();
+    const user            = useSelector(state => state.authSlice);
+    const changeUserInfos = useSelector(state => state.profileSlice);
     
     useEffect(() => {
         if(user?.isLogout === true && !localStorage.getItem("token")){
@@ -29,7 +30,7 @@ const Sidebar = () => {
             <div className="sidebar">
                 <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div className="image">
-                        <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="img User" />
+                        <img src={localStorage.getItem('image')} className="img-circle elevation-2" alt="img User" />
                     </div>
                     <div className="info">
                         {localStorage.getItem("username") && <a className="d-block" href="/">{localStorage.getItem("username")}</a>}

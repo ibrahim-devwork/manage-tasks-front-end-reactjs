@@ -14,8 +14,8 @@ const ChangeEmail = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" id="password" placeholder="******" />
+                                <label htmlFor="passwordEmail">Password</label>
+                                <input type="password" className="form-control" id="passwordEmail" placeholder="******" />
                             </div>
                     </div>
 

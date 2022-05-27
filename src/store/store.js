@@ -5,6 +5,7 @@ import projectSlice from "./projects/projectSlice";
 import taskSlice from "./tasks/taskSlice";
 import dropDownsDataSlice from "./dropDownsData/dropDownsDataSlice";
 import dashboardSlice from "./dashboard/dashboardSlice";
+import profileSlice from "./profile/profileSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,7 +13,8 @@ const store = configureStore({
     projectSlice,
     taskSlice,
     dropDownsDataSlice,
-    dashboardSlice
+    dashboardSlice,
+    profileSlice
   }
 });
 
