@@ -57,32 +57,37 @@ const profileValidation = (form, action) => {
                             break; 
 
         case 'change-password' :
-                            if (!form?.new_password) {
-                                errors.new_password = "The new_password is required !";
-                            } else if (form?.new_password?.length < 6) {
-                                errors.new_password = "The new_password must be at least 6 characters !";
-                            }
-                            else if (form?.new_password?.length > 50) {
-                                errors.new_password = "The new_password must not be greater than 50 characters !";
-                            }
-
                             if (!form?.current_password) {
                                 errors.current_password = "The current_password is required !";
                             } else if (form?.current_password?.length < 6) {
-                                errors.current_password = "The current_password must be at least 6 characters !";
+                                errors.current_password = "The current password must be at least 6 characters !";
                             }
                             else if (form?.current_password?.length > 50) {
-                                errors.current_password = "The current_password must not be greater than 50 characters !";
+                                errors.current_password = "The current password must not be greater than 50 characters !";
+                            }
+                            
+                            if (!form?.new_password) {
+                                errors.new_password = "The new_password is required !";
+                            } else if (form?.new_password?.length < 6) {
+                                errors.new_password = "The new password must be at least 6 characters !";
+                            }
+                            else if (form?.new_password?.length > 50) {
+                                errors.new_password = "The new password must not be greater than 50 characters !";
                             }
                             
                             if (!form?.confirm_password) {
                                 errors.confirm_password = "The confirm_password is required !";
                             } else if (form?.confirm_password?.length < 6) {
-                                errors.confirm_password = "The confirm_password must be at least 3 characters !";
+                                errors.confirm_password = "The confirm password must be at least 3 characters !";
                             }
                             else if (form?.confirm_password?.length > 50) {
-                                errors.confirm_password = "The confirm_password must not be greater than 22 characters !";
+                                errors.confirm_password = "The confirm password must not be greater than 22 characters !";
                             }
+
+                            if(form?.new_password != form?.confirm_password) {
+                                errors.comparingPasswords = "Yours passwords do not match !";
+                            }
+
                             break; 
         default : {};
     }

@@ -36,11 +36,17 @@ const Profile = () => {
             />
             <br/>
             
-            <ChangeEmail />
+            <ChangeEmail
+            setIsChange={setIsChange} 
+            />
             <br />
-            <ChangeUsername />
+            <ChangeUsername 
+             setIsChange={setIsChange} 
+            />
             <br />
-            <ChangePassword /> 
+            <ChangePassword 
+            setIsChange={setIsChange} 
+            /> 
            
             <br /><br />
             </div>

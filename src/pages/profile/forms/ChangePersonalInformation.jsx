@@ -42,9 +42,6 @@ const ChangePersonalInformation = ({setIsChange}) => {
             setFormInfos({ ...formInfos, image: reader.result });
         };
         } 
-        // else {
-        //     setFormInfos({ ...formInfos, image: "https://via.placeholder.com/150" });
-        // }
     }
 
     useEffect(() => {
@@ -53,7 +50,7 @@ const ChangePersonalInformation = ({setIsChange}) => {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Your information personal has been updated',
+                title: 'Your information personal has been changed.',
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -98,9 +95,9 @@ const ChangePersonalInformation = ({setIsChange}) => {
                         </div>
 
                         <div className="col-md-9">
-                            {userData?.errors?.message &&
+                            {userData?.errorsInfos?.message &&
                                 <div>
-                                    <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errors?.message}</span><br />
+                                    <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errorsInfos?.message}</span><br />
                                 </div>
                             }
 
@@ -120,9 +117,9 @@ const ChangePersonalInformation = ({setIsChange}) => {
                                                 <span style={{ color: 'red', fontSize: '14px' }}>{infosErrValidate?.first_name}</span><br />
                                             </div>
                                 }
-                                {userData?.errors?.first_name &&
+                                {userData?.errorsInfos?.first_name &&
                                     <div>
-                                        <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errors?.first_name}</span><br />
+                                        <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errorsInfos?.first_name}</span><br />
                                     </div>
                                 }
                             </div>
@@ -143,9 +140,9 @@ const ChangePersonalInformation = ({setIsChange}) => {
                                                 <span style={{ color: 'red', fontSize: '14px' }}>{infosErrValidate?.last_name}</span><br />
                                             </div>
                                 }
-                                {userData?.errors?.last_name &&
+                                {userData?.errorsInfos?.last_name &&
                                     <div>
-                                        <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errors?.last_name}</span><br />
+                                        <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errorsInfos?.last_name}</span><br />
                                     </div>
                                 }
                             </div>
@@ -166,9 +163,9 @@ const ChangePersonalInformation = ({setIsChange}) => {
                                                 <span style={{ color: 'red', fontSize: '14px' }}>{infosErrValidate?.phone_number}</span><br />
                                             </div>
                                 }
-                                {userData?.errors?.phone_number &&
+                                {userData?.errorsInfos?.phone_number &&
                                     <div>
-                                        <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errors?.phone_number}</span><br />
+                                        <span style={{ color: 'red', fontSize: '14px' }}>{userData?.errorsInfos?.phone_number}</span><br />
                                     </div>
                                 }
                             </div>
