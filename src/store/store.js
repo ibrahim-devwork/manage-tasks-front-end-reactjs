@@ -6,6 +6,7 @@ import taskSlice from "./tasks/taskSlice";
 import dropDownsDataSlice from "./dropDownsData/dropDownsDataSlice";
 import dashboardSlice from "./dashboard/dashboardSlice";
 import profileSlice from "./profile/profileSlice";
+import userSlice from "./users/userSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,7 +15,8 @@ const store = configureStore({
     taskSlice,
     dropDownsDataSlice,
     dashboardSlice,
-    profileSlice
+    profileSlice,
+    userSlice
   }
 });
 
