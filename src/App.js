@@ -13,16 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="wrapper">
-          {localStorage.getItem("token") && 
-            <div>
-              <Navbar/>
-              <Sidebar/>
-            </div>
-          }
         <AllRoutes/>
-        {localStorage.getItem("token") && 
-        <Footer/>
-        }
       </div>
     </BrowserRouter>
   );

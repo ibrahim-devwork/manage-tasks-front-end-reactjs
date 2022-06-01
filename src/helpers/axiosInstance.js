@@ -10,4 +10,13 @@ axiosInstance.interceptors.request.use(function (config) {
   return config;
 });
 
+axios.interceptors.response.use(function (response) {
+   // Do something with response data
+   console.log('error');
+  return response;
+}, function (error) {
+  console.log('error');
+  return Promise.reject(error);
+});
+
 export default axiosInstance;

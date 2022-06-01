@@ -8,6 +8,9 @@ import Tasks from './pages/tasks/Tasks';
 import NotFoundPage from './pages/NotFoundPage';
 import Profile from './pages/profile/Profile';
 import Users from './pages/users/Users';
+import Footer from './layouts/Footer';
+import Sidebar from './layouts/Sidebar';
+import Navbar  from './layouts/Navbar';
 
 const AllRoutes = () => {
 
@@ -27,6 +30,12 @@ const AllRoutes = () => {
 
     return (
         <div>
+            {localStorage.getItem("token") && 
+            <>
+                <Navbar/>
+                <Sidebar/>
+            </>
+            }
             {localStorage.getItem("token") && 
             <div className="content-wrapper">
                  {(localStorage.getItem("role") && localStorage.getItem("role") != 3) ? 
@@ -59,7 +68,9 @@ const AllRoutes = () => {
                 <Route path="/login" element={<Login />} />
             </Routes>
             }
-
+            {localStorage.getItem("token") && 
+                <Footer/>
+            }
         </div>
     )
 }
